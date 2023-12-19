@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:url("background.jpg");
+        }
+h1 
+{
+   text-align: center;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+        #calculator {
+            width: 250px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: gainsboro; /* Change the calculator background color to a dark shade */
+            color: green; /* Change the text color to white */
+        }
+        input[type="text"] {
+            width: 90%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: white; /* Change the input field background color */
+            color: black; /* Change the input field text color */
+            border: none; /* Remove the input field border */
+        }
+        input[type="button"] {
+            width: 48px;
+            height: 48px;
+            font-size: 18px;
+            margin: 2px;
+            background-color: black; /* Change the button background color */
+            color: wheat; /* Change the button text color */
+            border: none; /* Remove the button border */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <table>
+            <tr>
+                <td><input type="button" value="7" onclick="appendToDisplay('7')"></td>
+                <td><input type="button" value="8" onclick="appendToDisplay('8')"></td>
+                <td><input type="button" value="9" onclick="appendToDisplay('9')"></td>
+                <td><input type="button" value="/" onclick="appendToDisplay('/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="appendToDisplay('4')"></td>
+                <td><input type="button" value="5" onclick="appendToDisplay('5')"></td>
+                <td><input type="button" value="6" onclick="appendToDisplay('6')"></td>
+                <td><input type="button" value="*" onclick="appendToDisplay('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="appendToDisplay('1')"></td>
+                <td><input type="button" value="2" onclick="appendToDisplay('2')"></td>
+                <td><input type="button" value="3" onclick="appendToDisplay('3')"></td>
+                <td><input type="button" value="-" onclick="appendToDisplay('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="appendToDisplay('0')"></td>
+                <td><input type="button" value="." onclick="appendToDisplay('.')"></td>
+                <td><input type="button" value="=" onclick="calculate()"></td>
+                <td><input type="button" value="+" onclick="appendToDisplay('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="C" onclick="clearDisplay()"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>
+
